@@ -10,6 +10,9 @@ body {
   padding: 0;
   box-sizing: border-box;
 }
+.mt-1 {
+  margin-top: 10px;
+}
 .mr-1 {
   margin-right: 10px;
 }
@@ -22,6 +25,9 @@ body {
 .mx-1 {
   margin-left: 10px;
   margin-right: 10px;
+}
+hr.rule {
+  border: 1px solid rgb(250, 248, 248);
 }
 .full-width {
   width: 100%;
@@ -67,3 +73,18 @@ body {
   width: 18px;
   border: 1px solid rgb(247, 215, 215);
 }
+.el-button--danger {
+  color: #FFF;
+  background-color: #cc2228;
+  border-color: #cc2228;
+}
+.el-dropdown-menu__item:focus, 
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: rgb(245, 71, 71);
+  color: white;
+}
+/* .el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: red;
+  color: #f56c71;
+} */

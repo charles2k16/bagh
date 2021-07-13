@@ -24,7 +24,7 @@
               </div>
             </el-badge>
 
-            <el-dropdown>
+            <el-dropdown trigger="click">
               <div class="account d-flex-center ml-2">
                 <i class="el-icon-user-solid icon"></i>
                 <span class="mx-1">Account</span>
@@ -33,18 +33,34 @@
 
               <el-dropdown-menu slot="dropdown">
                 <div class="account_dropdown">
-                  <div>
+                  <div class="acc_info">
                     <p>
-                      Login or Create an account for easy order tracking,
+                      Login now or Create an account for easy order tracking,
                       rewards, offers and more.
                     </p>
 
-                    <el-button size="small">Login</el-button>
-                    <el-button size="small">Crete Account</el-button>
+                    <div>
+                      <el-button type="danger" size="small" class="full-width"
+                        ><b>Login</b></el-button
+                      >
+                    </div>
+
+                    <div class="mt-1">
+                      <el-button
+                        size="small"
+                        class="full-width"
+                        type="danger"
+                        plain
+                        ><b>Create Account</b></el-button
+                      >
+                    </div>
                   </div>
-                  <hr />
+                  <hr class="rule" />
                   <el-dropdown-item icon="el-icon-user"
                     >Account Settings</el-dropdown-item
+                  >
+                  <el-dropdown-item icon="el-icon-user"
+                    >Saved Items</el-dropdown-item
                   >
                   <el-dropdown-item icon="el-icon-shopping-cart-full"
                     >Orders & Purchases</el-dropdown-item
@@ -125,10 +141,24 @@ export default {
   }
 }
 .account_dropdown {
-  // margin-top: -10px;
   padding: 1px;
   max-width: 300px;
   max-height: 350px;
   overflow-y: scroll;
+
+  .acc_info {
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+
+    p {
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 15px;
+      margin-top: 5px;
+    }
+  }
 }
 </style>
