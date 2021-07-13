@@ -13,6 +13,7 @@ module.exports = {
     'plugin:nuxt/recommended',
     'prettier'
   ],
+  // extends: ["plugin:vue/essential", "eslint:recommended"],
   plugins: [
   ],
   // add your custom rules here
