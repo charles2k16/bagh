@@ -59,7 +59,7 @@
                   <el-dropdown-item icon="el-icon-user"
                     >Account Settings</el-dropdown-item
                   >
-                  <el-dropdown-item icon="el-icon-user"
+                  <el-dropdown-item icon="el-icon-folder-add"
                     >Saved Items</el-dropdown-item
                   >
                   <el-dropdown-item icon="el-icon-shopping-cart-full"
