@@ -38,18 +38,22 @@
               <CountDown />
             </div>
             <el-carousel height="300px" arrow="always">
-              <el-carousel-item class="br-5">
+              <el-carousel-item
+                v-for="(deals, index) in dailyDeals"
+                :key="index"
+                class="br-5"
+              >
                 <div class="d-flex-col-center">
                   <img
-                    src="~/assets/img/products/bagp0002.jpg"
+                    :src="require(`~/assets/img/products/${deals.image}`)"
                     height="170px"
                   />
-                  <div class="deal_prod_details mx-1 mt-1">
+                  <div class="mx-1 mt-1">
                     <h5>
-                      HP OMEN - 16.1" Laptop - Intel Core i7 - 16GB Memory
+                      {{ deals.name }}
                     </h5>
                     <el-rate
-                      v-model="rating"
+                      v-model="deals.rating"
                       class="mt-1"
                       disabled
                       show-score
@@ -58,8 +62,12 @@
                     >
                     </el-rate>
                     <div class="price_div mt-1">
-                      <span class="cancel_prize"> ¢2,800.00 </span>
-                      <span class="main_prize"> ¢2,100.00 </span>
+                      <span class="cancel_prize mr-1">
+                        {{ getPriceWithCommas(deals.initial_price) }}
+                      </span>
+                      <span class="main_prize">
+                        {{ getPriceWithCommas(deals.price) }}
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -68,6 +76,10 @@
           </div>
         </el-col>
       </el-row>
+
+      <div class="mt-2">
+        <ProductsListNew title="New products this week" type="new" />
+      </div>
     </div>
   </div>
 </template>
@@ -76,7 +88,6 @@
 export default {
   data() {
     return {
-      rating: 4,
       categories: [
         { name: 'Health & Beauty' },
         { name: 'Floral & Deco.' },
@@ -89,7 +100,20 @@ export default {
         { name: 'Lights & Lightings' },
       ],
       dailyDeals: [
-        { name: 'HP OMEN - 16.1" Laptop - Intel Core i7 - 16GB Memory' },
+        {
+          name: 'HP OMEN - 16.1" Laptop - Intel Core i7 - 16GB Memory',
+          price: 1800,
+          initial_price: 2300,
+          image: 'bagp0002.jpg',
+          rating: 4,
+        },
+        {
+          name: 'Westpool WP-666 Electric Blender - 1.5 Litres - Black',
+          price: 200,
+          initial_price: 250,
+          image: 'bagp0001.jpg',
+          rating: 3,
+        },
       ],
     }
   },
@@ -98,7 +122,9 @@ export default {
 
 <style lang="scss" scoped>
 .category_div {
-  border: 1px solid rgb(236, 235, 235);
+  border: 1px solid rgb(226, 224, 224);
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
+  background: #fff;
   border-radius: 4px;
   margin-top: 10px;
 
@@ -141,8 +167,10 @@ export default {
 }
 
 .daily_sales {
+  background: #fff;
   height: 378px;
   border-radius: 5px;
-  border: 1px solid rgb(236, 235, 235);
+  border: 1px solid rgb(226, 224, 224);
+  box-shadow: 0 2px 12px 0 rgb(0 0 0 / 10%);
 }
 </style>

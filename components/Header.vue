@@ -4,7 +4,7 @@
       <el-row :gutter="10">
         <el-col :xs="7" :sm="6" :md="4">
           <div class="header_flex_center">
-            <img src="/logo.png" />
+            <img src="/bag.png" />
           </div>
         </el-col>
 
@@ -18,7 +18,7 @@
 
         <el-col :xs="3" :sm="3" :md="5">
           <div class="header_flex_center">
-            <el-badge :value="5" class="item">
+            <el-badge :value="15" class="item">
               <div class="cart d-flex-center">
                 <i class="el-icon-shopping-cart-2"></i>
               </div>
