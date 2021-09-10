@@ -92,7 +92,7 @@ export default {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background-color: #df2027;
+  background-color: var(--primary_red);
   height: 72px !important;
   font-size: 0.875rem;
 }
