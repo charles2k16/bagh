@@ -109,7 +109,7 @@ export default {
   height: 33px;
   border: 1px solid #ffd741;
   border-radius: 2px;
-  background: #e5c13a;
+  background: var(--primary_yellow);
   cursor: pointer;
 
   i {
@@ -123,7 +123,7 @@ export default {
   color: #e4e4e2;
 
   &:hover {
-    color: #e5c13a;
+    color: var(--primary_yellow);
   }
 
   .icon {

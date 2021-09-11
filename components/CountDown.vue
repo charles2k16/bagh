@@ -22,7 +22,7 @@ export default {
       const hour = minute * 60
       const day = hour * 24
 
-      const salesEnd = 'Sep 01, 2021 00:00:00'
+      const salesEnd = 'Dec 01, 2021 00:00:00'
       const countDown = new Date(salesEnd).getTime()
 
       const x = setInterval(function () {
@@ -66,7 +66,7 @@ export default {
     padding: 5px;
     text-transform: uppercase;
     text-align: center;
-    background: #ffd741;
+    background: var(--sec_yellow);
     width: 40px;
     border-radius: 3px;
   }

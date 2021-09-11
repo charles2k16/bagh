@@ -132,11 +132,11 @@ export default {
     z-index: 2;
     position: relative;
     height: 43px;
-    background-color: #ffd741;
+    background-color: var(--sec_yellow);
     display: flex;
     align-items: center;
     padding: 15px;
-    border: 1px solid #ffd741;
+    border: 1px solid var(--sec_yellow);
 
     &::after {
       content: ' ';
@@ -146,7 +146,7 @@ export default {
       border-top: none;
       border-right: 10px solid transparent;
       border-left: 10px solid transparent;
-      border-top: 10px solid #ffd741;
+      border-top: 10px solid var(--sec_yellow);
     }
 
     i {
