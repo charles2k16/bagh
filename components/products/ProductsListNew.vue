@@ -13,47 +13,20 @@
       </div>
     </div>
     <div class="mt-1 product_list_view">
-      <div class="products_div d-flex-col-center">
-        <img src="~/assets/img/products/1.jpg" height="150" />
+      <div
+        v-for="(product, index) in productsList"
+        :key="index"
+        class="products_div d-flex-col-center"
+        @click="showProductDeatils(product.name, product.id)"
+      >
+        <img :src="product.media.source" height="150" />
         <div class="mt-0">
-          <p class="product_name">Infinix XW01A Smart Watch - Black/Green</p>
+          <p class="product_name">{{ product.name }}</p>
 
           <div class="price_div mt-0">
-            <span class="main_prize mr-1"> ¢100.00 </span>
-            <span class="cancel_prize"> ¢2,200.00 </span>
-          </div>
-
-          <!-- <div class="mt-0">
-            <span><i class="el-icon-collection-tag"></i></span>
-            <el-button size="mini" plain type="warning">ADD TO CART</el-button>
-          </div> -->
-        </div>
-      </div>
-
-      <div class="products_div d-flex-col-center">
-        <img src="~/assets/img/products/1.jpg" height="150" />
-        <div class="mt-0">
-          <p class="product_name">Infinix XW01A Smart Watch - Black/Green</p>
-
-          <div class="price_div mt-0">
-            <span class="main_prize mr-1"> ¢100.00 </span>
-            <span class="cancel_prize"> ¢2,200.00 </span>
-          </div>
-
-          <!-- <div class="mt-0">
-            <span><i class="el-icon-collection-tag"></i></span>
-            <el-button size="mini" plain type="warning">ADD TO CART</el-button>
-          </div> -->
-        </div>
-      </div>
-
-      <div class="products_div d-flex-col-center">
-        <img src="~/assets/img/products/1.jpg" height="150" />
-        <div class="mt-0">
-          <p class="product_name">Infinix XW01A Smart Watch - Black/Green</p>
-
-          <div class="price_div mt-0">
-            <span class="main_prize mr-1"> ¢100.00 </span>
+            <span class="main_prize mr-1">
+              ¢{{ product.price.formatted }}
+            </span>
             <span class="cancel_prize"> ¢2,200.00 </span>
           </div>
 
@@ -68,6 +41,8 @@
 </template>
 
 <script>
+import productService from '../../api/products'
+
 export default {
   name: 'ProductsListNew',
   props: {
@@ -82,25 +57,34 @@ export default {
   },
   data() {
     return {
-      products: [
-        {
-          name: 'Infinix XW01A Smart Watch - Black/Green',
-          description:
-            'Infinix XW01A Smart Watch - Black/Green Infinix XW01A Smart Watch - Black/Green',
-          price: 100,
-          initial_price: 2100,
-          image: '1.jpg',
-        },
-        {
-          name: 'Infinix XW01A Smart Watch - Black/Green',
-          description:
-            'Infinix XW01A Smart Watch - Black/Green Infinix XW01A Smart Watch - Black/Green',
-          price: 100,
-          initial_price: 2100,
-          image: '2.jpg',
-        },
-      ],
+      queryParams: {
+        limit: 20,
+      },
+      productsList: [],
     }
+  },
+  async fetch() {
+    await productService
+      .getAllProducts(this.queryParams)
+      .then((result) => {
+        this.productsList = result
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  methods: {
+    showProductDeatils(name, id) {
+      this.$router.push({
+        name: 'product-name',
+        params: {
+          name,
+        },
+        query: {
+          id,
+        },
+      })
+    },
   },
 }
 </script>

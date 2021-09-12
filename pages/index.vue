@@ -14,7 +14,7 @@
                 v-for="(category, index) in categories"
                 :key="index"
               >
-                {{ category.name }}
+                <span @click="gettee"> {{ category.name }}</span>
               </el-dropdown-item>
             </div>
           </div>
@@ -85,20 +85,12 @@
 </template>
 
 <script>
+import categoriesService from '../api/categories'
+
 export default {
   data() {
     return {
-      categories: [
-        { name: 'Health & Beauty' },
-        { name: 'Floral & Deco.' },
-        { name: 'Automobile Tools' },
-        { name: 'Toys & Hobbies' },
-        { name: 'Electronics' },
-        { name: 'Home & Office' },
-        { name: 'Kitchen Accessories' },
-        { name: 'Apparel & Bags' },
-        { name: 'Lights & Lightings' },
-      ],
+      categories: [],
       dailyDeals: [
         {
           name: 'HP OMEN - 16.1" Laptop - Intel Core i7 - 16GB Memory',
@@ -115,7 +107,23 @@ export default {
           rating: 3,
         },
       ],
+      testCat: [],
     }
+  },
+  async fetch() {
+    await categoriesService
+      .getAllCategories()
+      .then((result) => {
+        this.categories = result
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+  },
+  methods: {
+    gettee() {
+      console.log('we arehereeeee fuck thats')
+    },
   },
 }
 </script>

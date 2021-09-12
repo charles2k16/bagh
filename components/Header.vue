@@ -18,11 +18,7 @@
 
         <el-col :xs="3" :sm="3" :md="5">
           <div class="header_flex_center">
-            <el-badge :value="15" class="item">
-              <div class="cart d-flex-center">
-                <i class="el-icon-shopping-cart-2"></i>
-              </div>
-            </el-badge>
+            <HeaderCart />
 
             <el-dropdown trigger="click">
               <div class="account d-flex-center ml-2">
@@ -83,6 +79,11 @@ export default {
       searchItem: '',
     }
   },
+  methods: {
+    gettee() {
+      console.log('we arehereeeee fuck thats')
+    },
+  },
 }
 </script>
 
@@ -103,20 +104,6 @@ export default {
 }
 .header_search_input {
   width: 90%;
-}
-.cart {
-  width: 38px;
-  height: 33px;
-  border: 1px solid #ffd741;
-  border-radius: 2px;
-  background: var(--primary_yellow);
-  cursor: pointer;
-
-  i {
-    color: black;
-    font-weight: bold;
-    font-size: 18px;
-  }
 }
 .account {
   cursor: pointer;
