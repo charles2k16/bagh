@@ -20,7 +20,7 @@
         @click="showProductDeatils(product.name, product.id)"
       >
         <img :src="product.media.source" height="150" />
-        <div class="mt-0">
+        <div class="mt-1 px-0">
           <p class="product_name">{{ product.name }}</p>
 
           <div class="price_div mt-0">
@@ -29,11 +29,6 @@
             </span>
             <span class="cancel_prize"> ¢2,200.00 </span>
           </div>
-
-          <!-- <div class="mt-0">
-            <span><i class="el-icon-collection-tag"></i></span>
-            <el-button size="mini" plain type="warning">ADD TO CART</el-button>
-          </div> -->
         </div>
       </div>
     </div>

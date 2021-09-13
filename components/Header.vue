@@ -4,7 +4,7 @@
       <el-row :gutter="10">
         <el-col :xs="7" :sm="6" :md="4">
           <div class="header_flex_center">
-            <img src="/bag.png" />
+            <NuxtLink to="/"> <img src="/bag.png" /></NuxtLink>
           </div>
         </el-col>
 

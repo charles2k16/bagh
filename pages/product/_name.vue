@@ -1,29 +1,31 @@
+/* eslint-disable vue/no-v-html */
 <template>
-  <div>
-    <el-row :gutter="10">
-      <el-col :xs="24" :sm="24" :md="12">
-        <div>
+  <div class="section mt-2">
+    <div v-if="item == null" v-loading="loading" class="mt-2"></div>
+
+    <el-row v-else :gutter="10">
+      <el-col :xs="24" :sm="24" :md="11">
+        <div class="bg-white br-5 p-2">
           <el-carousel :interval="5000" arrow="always">
-            <el-carousel-item class="p-2" style="text-align: center">
+            <el-carousel-item style="text-align: center">
               <img
-                style="text-align: center"
                 :src="item.media.source"
                 alt="item"
-                width="70%"
+                class="product_carousel"
               />
             </el-carousel-item>
           </el-carousel>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="12">
-        <div>
+      <el-col :xs="24" :sm="24" :md="13">
+        <div class="bg-white br-5 p-2">
           <h2>{{ item.name }}</h2>
-          <div class="d-flex mb-1">
-            <el-rate v-model="rateValue" disabled text-color="#6c9804">
+          <div class="d-flex mt-1 mb-1">
+            <el-rate v-model="rateValue" disabled text-color="#e5c13a">
             </el-rate>
             <span class="">(3 customer review)</span>
           </div>
-          <hr style="border: 1px dotted rgb(250, 249, 249)" />
+          <hr class="dot" />
           <div class="d-flex">
             <el-button type="text" class="cancel_prize"
               >GH₵ {{ item.price.formatted }}</el-button
@@ -35,50 +37,34 @@
             </el-button>
           </div>
           <div>
-            <p class="mb-2">
-              Donec non est at libero vulputate rutrum. Morbi ornare lectus quis
-              justo gravida semper. Nulla tellus mi, vulputate adipiscing cursus
-              eu, suscipit id nulla. Donec a neque libero.
-            </p>
-            <span>
-              <el-button
-                v-show="!showCheckoutButton"
-                type="primary"
-                icon="el-icon-shopping-cart-full"
-                size="medium"
-                class="full-width"
-                @click="addToCart(item)"
-                >ADD TO CART</el-button
-              >
-            </span>
+            <p class="mb-2" v-html="item.description"></p>
 
-            <span>
+            <div class="d-flex">
+              <el-button type="primary" size="medium"><b>Buy Now</b></el-button>
+
               <el-button
-                v-show="showCheckoutButton"
-                type="danger"
+                type="info"
                 icon="el-icon-shopping-cart-full"
                 size="medium"
-                class="full-width px-1"
-                @click="checkout"
-                >PROCEED TO CHECKOUT</el-button
+                ><b>Add to Cart</b></el-button
               >
-            </span>
+            </div>
           </div>
 
           <div class="mt-2">
-            <hr style="border: 1px dotted rgb(250, 249, 249)" />
-            <ul class="mt-1 mb-2 item-discount-info">
+            <hr class="dot" />
+            <ul class="mt-1 mb-2 item_discount_info">
               <li>Free Delivery for Items GH₵ 100 and above.</li>
               <li>10% Discount on Food Packages</li>
             </ul>
-            <div class="flex-justify">
+            <div class="d-flex-justify-between">
               <div>
-                <p class="mb-1">Share this product</p>
+                <p class="mb-0">Share this product</p>
                 <span>
-                  <a href="" class="mr-1">
+                  <a href="" class="mr-0">
                     <img src="/instagram.png" alt="icon" width="20" />
                   </a>
-                  <a href="" class="mr-1">
+                  <a href="" class="mr-0">
                     <img src="/facebook.png" alt="icon" width="20" />
                   </a>
                   <a href="">
@@ -87,7 +73,7 @@
                 </span>
               </div>
               <div>
-                <p class="mb-1">Add to your saved products</p>
+                <p class="mb-0">Add to your saved products</p>
                 <span>
                   <el-button plain size="mini" icon="el-icon-collection-tag"
                     >Add to saved</el-button
@@ -109,21 +95,48 @@ export default {
   name: 'SingleProduct',
   data() {
     return {
+      loading: true,
       item: null,
       rateValue: 3,
       showProductModal: true,
       showCheckoutButton: false,
     }
   },
-  created() {
-    productService
+  async fetch() {
+    await productService
       .getSingleProduct(this.$route.query.id)
       .then((result) => {
+        console.log(result)
         this.item = result
+        this.loading = false
       })
       .catch((err) => {
         console.log(err)
       })
   },
+  // created() {
+  //   this.getProduct()
+  // },
+  methods: {
+    // getProduct() {
+    //   const self = this
+    //   productService
+    //     .getSingleProduct(this.$route.query.id)
+    //     .then((result) => {
+    //       console.log(result)
+    //       self.item = result
+    //     })
+    //     .catch((err) => {
+    //       console.log(err)
+    //     })
+    // },
+  },
 }
 </script>
+
+<style lang="scss" scoped>
+.item_discount_info li {
+  font-size: 12px;
+  list-style: inside;
+}
+</style>
