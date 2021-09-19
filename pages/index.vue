@@ -14,7 +14,7 @@
                 v-for="(category, index) in categories"
                 :key="index"
               >
-                <span @click="gettee"> {{ category.name }}</span>
+                <span class="size-13"> {{ category.name }}</span>
               </el-dropdown-item>
             </div>
           </div>
@@ -78,19 +78,33 @@
       </el-row>
 
       <div class="mt-2">
-        <ProductsListNew title="New products this week" type="new" />
+        <ProductsList title="New products this week" type="new-products" />
+      </div>
+
+      <div class="mt-2">
+        <ProductsList title="Featured Products" type="all" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import categoriesService from '../api/categories'
+// import categoriesService from '../api/categories'
 
 export default {
   data() {
     return {
-      categories: [],
+      categories: [
+        { name: 'Apparel & Bags' },
+        { name: 'Kitchen Accessories' },
+        { name: 'Home & Office' },
+        { name: 'Toys & Hobbies' },
+        { name: 'Automobile Tools' },
+        { name: 'Floral & Deco' },
+        { name: 'Health & Beauty' },
+        { name: 'Lights & Lightings' },
+        { name: 'Electronics' },
+      ],
       dailyDeals: [
         {
           name: 'HP OMEN - 16.1" Laptop - Intel Core i7 - 16GB Memory',
@@ -110,20 +124,20 @@ export default {
       testCat: [],
     }
   },
-  async fetch() {
-    await categoriesService
-      .getAllCategories()
-      .then((result) => {
-        this.categories = result
-      })
-      .catch((err) => {
-        console.log(err)
-      })
-  },
+  // async fetch() {
+  //   await categoriesService
+  //     .getAllCategories()
+  //     .then((result) => {
+  //       this.categories = result
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+  // },
   methods: {
-    gettee() {
-      console.log('we arehereeeee fuck thats')
-    },
+    // gettee() {
+    //   console.log('we arehereeeee fuck thats')
+    // },
   },
 }
 </script>
