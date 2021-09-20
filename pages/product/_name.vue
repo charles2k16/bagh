@@ -1,4 +1,3 @@
-/* eslint-disable vue/no-v-html */
 <template>
   <div class="section mt-2">
     <div v-if="item == null" v-loading="loading" class="mt-2"></div>
@@ -27,11 +26,11 @@
           </div>
           <hr class="dot" />
           <div class="d-flex">
-            <el-button type="text" class="cancel_prize"
+            <el-button type="text" class="cancel_prize color-primary"
               >GH₵ {{ item.price.formatted }}</el-button
             >
             <el-button type="text">
-              <span style="font-size: 25px"
+              <span class="color-primary" style="font-size: 25px"
                 >GH₵ {{ item.price.formatted }}</span
               >
             </el-button>
@@ -106,30 +105,12 @@ export default {
     await productService
       .getSingleProduct(this.$route.query.id)
       .then((result) => {
-        console.log(result)
         this.item = result
         this.loading = false
       })
       .catch((err) => {
         console.log(err)
       })
-  },
-  // created() {
-  //   this.getProduct()
-  // },
-  methods: {
-    // getProduct() {
-    //   const self = this
-    //   productService
-    //     .getSingleProduct(this.$route.query.id)
-    //     .then((result) => {
-    //       console.log(result)
-    //       self.item = result
-    //     })
-    //     .catch((err) => {
-    //       console.log(err)
-    //     })
-    // },
   },
 }
 </script>

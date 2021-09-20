@@ -45,7 +45,7 @@ body {
 .mr-1 {
   margin-right: 10px;
 }
-.mr-0{
+.mr-0 {
   margin-right: 5px;
 }
 
@@ -159,6 +159,9 @@ hr.dot {
 }
 .size-13 {
   font-size: 13px;
+}
+.color-primary {
+  color: var(--primary_red);
 }
 .products_div {
   width: 190px;
