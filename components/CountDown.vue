@@ -22,7 +22,7 @@ export default {
       const hour = minute * 60
       const day = hour * 24
 
-      const salesEnd = 'Sept 25 , 2021 00:00:00'
+      const salesEnd = 'Dec 25 , 2021 00:00:00'
       const countDown = new Date(salesEnd).getTime()
 
       const x = setInterval(function () {
@@ -41,13 +41,13 @@ export default {
         )
 
         if (distance < 0) {
-          // const headline = document.getElementById('headline')
+          const headline = document.getElementById('headline')
           const countdown = document.getElementById('countdown')
-          // const content = document.getElementById('content')
+          const content = document.getElementById('content')
 
-          // headline.innerText = 'Daily Sales just ended!'
+          headline.innerText = 'Daily Sales just ended!'
           countdown.style.display = 'none'
-          // content.style.display = 'block'
+          content.style.display = 'block'
 
           clearInterval(x)
         }
