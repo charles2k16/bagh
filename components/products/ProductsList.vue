@@ -17,7 +17,7 @@
       <el-skeleton :loading="productsLoading" animated>
         <template slot="template">
           <div class="d-flex">
-            <div v-for="i in count" :key="i" class="mr-0">
+            <div v-for="i in 6" :key="i" class="mr-0">
               <el-skeleton-item
                 variant="image"
                 style="width: 190px; height: 150px"
