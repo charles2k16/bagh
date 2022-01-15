@@ -2,13 +2,13 @@
   <el-header class="sticky-header">
     <div class="section">
       <el-row :gutter="10">
-        <el-col :xs="7" :sm="6" :md="4">
+        <el-col :xs="7" :sm="7" :md="4">
           <div class="header_flex_center">
-            <NuxtLink to="/"> <img src="/bag.png" /></NuxtLink>
+            <NuxtLink to="/"> <img src="/bag1.png" /></NuxtLink>
           </div>
         </el-col>
 
-        <el-col :xs="14" :sm="15" :md="15">
+        <el-col :xs="14" :sm="14" :md="15">
           <div class="header_flex_center header_search_input">
             <el-input v-model="searchItem" placeholder="Search product...">
               <el-button slot="append" icon="el-icon-search"></el-button>
@@ -21,9 +21,9 @@
             <HeaderCart />
 
             <el-dropdown trigger="click">
-              <div class="account d-flex-center ml-2">
+              <div class="account d-flex-center ml-20">
                 <i class="el-icon-user-solid icon"></i>
-                <span class="mx-1">Account</span>
+                <span class="mx-10">Account</span>
                 <i class="el-icon-arrow-down icon2"></i>
               </div>
 
@@ -41,7 +41,7 @@
                       >
                     </div>
 
-                    <div class="mt-1">
+                    <div class="mt-10">
                       <el-button
                         size="small"
                         class="full-width"

@@ -2,7 +2,7 @@
   <div>
     <div class="products_div_head d-flex-justify-between">
       <div class="d-flex">
-        <span class="pdh_icon d-flex-center mr-1"
+        <span class="pdh_icon d-flex-center mr-10"
           ><i class="el-icon-price-tag"></i
         ></span>
         <span class="pdh_title d-flex-align-self-center">{{ title }}</span>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="mt-1">
+    <div class="mt-10">
       <el-skeleton :loading="productsLoading" animated>
         <template slot="template">
           <div class="d-flex">
@@ -25,7 +25,7 @@
               <div class="mt-0">
                 <el-skeleton-item variant="h3" style="width: 90%" />
                 <div class="d-flex-justify-between mt-1" style="height: 16px">
-                  <el-skeleton-item variant="text" class="mr-1" />
+                  <el-skeleton-item variant="text" class="mr-10" />
                   <el-skeleton-item variant="text" style="width: 50%" />
                 </div>
               </div>
@@ -34,9 +34,9 @@
         </template>
         <template slot="">
           <div v-if="type == 'new-products'">
-            <ProductsCarousel :products="products" />
+            <ProductsSlider :products="products" />
           </div>
-          <div v-else class="mt-1">
+          <div v-else class="mt-10">
             <Products :products="products" />
           </div>
         </template>
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import productService from '../../api/products'
+import productService from '@/api/products'
 
 export default {
   name: 'ProductsListNew',

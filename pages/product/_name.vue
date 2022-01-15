@@ -1,10 +1,10 @@
 <template>
-  <div class="section mt-2">
-    <div v-if="item == null" v-loading="loading" class="mt-2"></div>
+  <div class="section mt-20">
+    <div v-if="item == null" v-loading="loading" class="mt-20"></div>
 
     <el-row v-else :gutter="10">
       <el-col :xs="24" :sm="24" :md="11">
-        <div class="bg-white br-5 p-2">
+        <div class="bg-white br-5 p-20">
           <el-carousel :interval="5000" arrow="always">
             <el-carousel-item style="text-align: center">
               <img
@@ -17,9 +17,9 @@
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :md="13">
-        <div class="bg-white br-5 p-2">
+        <div class="bg-white br-5 p-20">
           <h2>{{ item.name }}</h2>
-          <div class="d-flex mt-1 mb-1">
+          <div class="d-flex mt-10 mb-10">
             <el-rate v-model="rateValue" disabled text-color="#e5c13a">
             </el-rate>
             <span class="">(3 customer review)</span>
@@ -36,7 +36,7 @@
             </el-button>
           </div>
           <div>
-            <p class="mb-2" v-html="item.description"></p>
+            <p class="mb-20" v-html="item.description"></p>
 
             <div class="d-flex">
               <el-button type="primary" size="medium"><b>Buy Now</b></el-button>
@@ -50,9 +50,9 @@
             </div>
           </div>
 
-          <div class="mt-2">
+          <div class="mt-20">
             <hr class="dot" />
-            <ul class="mt-1 mb-2 item_discount_info">
+            <ul class="mt-10 mb-20 item_discount_info">
               <li>Free Delivery for Items GH₵ 100 and above.</li>
               <li>10% Discount on Food Packages</li>
             </ul>

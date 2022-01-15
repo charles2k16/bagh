@@ -7,11 +7,11 @@
       @click="showProductDeatils(product.name, product.id)"
     >
       <img :src="product.media.source" height="150" />
-      <div class="mt-1 px-0">
+      <div class="mt-10 px-0">
         <p class="product_name">{{ product.name }}</p>
 
         <div class="price_div mt-0">
-          <span class="main_prize mr-1"> ¢{{ product.price.formatted }} </span>
+          <span class="main_prize mr-10"> ¢{{ product.price.formatted }} </span>
           <span class="cancel_prize"> ¢2,200.00 </span>
         </div>
       </div>
@@ -21,7 +21,7 @@
 
 <script>
 export default {
-  name: 'ProductsCarousel',
+  name: 'ProductsSlider',
   props: {
     products: {
       type: Array,
