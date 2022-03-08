@@ -1,0 +1,68 @@
+/*
+Write your variables here. All available variables can be
+found in element-ui/packages/theme-chalk/src/common/var.scss.
+For example, to overwrite the theme color:
+*/
+
+// $--color-primary: #df2027;
+// $--color-success: #13ce66;
+// $--color-warning: #e5c13a;
+// $--color-danger: #ff4949;
+// $--color-info: #cc2228;
+
+.el-input-group__append,
+.el-input-group__prepend {
+  background-color: var(--sec_red);
+  color: #ffffff;
+  font-weight: bold;
+  border: 1px solid var(--sec_red);
+}
+.el-badge__content {
+  background-color: var(--primary_red);
+  border-radius: 50px;
+  padding: 0 3px;
+  font-weight: bold;
+  width: 18px;
+  border: 1px solid rgb(245, 45, 45);
+}
+.el-button--danger {
+  color: #FFF;
+  background-color: var(--sec_red);
+  border-color: var(--sec_red);
+}
+.el-button--primary {
+  color: #FFF;
+  background-color:none;
+  background-image: linear-gradient(213deg, #ff7b48 7%, #f73c22 92%);
+  border-color: #ff7b48;
+}
+.el-button--info {
+  color: #FFF;
+  background-color: none;
+  background-image: linear-gradient(239deg, #ffac2d 7%, #ff8219);
+  border-color: #ffac2d;
+}
+.el-button--info:focus,
+.el-button--info:hover {
+  background-image: linear-gradient(239deg, #ff8219 7%, #ffac2d);
+  border-color: #ffac2d;
+  color: #FFF;
+}
+.el-button--primary:focus,
+.el-button--primary:hover {
+  background-image: linear-gradient(213deg, #f73c22 7%, #ff7b48 92%);
+  border-color: #ff7b48;
+  color: #FFF;
+}
+.el-button--danger:focus,
+.el-button--danger:hover {
+  background: #f83131;
+  border-color: #f83131;
+  color: #FFF;
+}
+.el-dropdown-menu__item:focus,
+.el-dropdown-menu__item:not(.is-disabled):hover {
+  background-color: var(--primary_red);
+  color: white;
+  font-weight: bold;
+}
