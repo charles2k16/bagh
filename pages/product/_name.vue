@@ -1,22 +1,49 @@
 <template>
   <div class="section mt-20">
-    <div v-if="item == null" v-loading="loading" class="mt-20"></div>
+    <el-skeleton :loading="productLoading" animated>
+      <template slot="template">
+        <el-row :gutter="10">
+          <el-col :xs="24" :sm="24" :md="11">
+            <div>
+              <el-skeleton-item
+                variant="image"
+                style="width: 100%; height: 180px"
+              />
+            </div>
+          </el-col>
 
-    <el-row v-else :gutter="10">
-      <el-col :xs="24" :sm="24" :md="11">
-        <div class="bg-white br-5 p-20">
-          <el-carousel :interval="5000" arrow="always">
-            <el-carousel-item style="text-align: center">
+          <el-col :xs="24" :sm="24" :md="13">
+            <div style="padding: 14px">
+              <el-skeleton-item variant="p" style="width: 100%" />
+              <div v-for="i in 5" :key="i">
+                <el-skeleton-item variant="text" style="margin-right: 16px" />
+                <el-skeleton-item variant="text" style="width: 30%" />
+              </div>
+            </div>
+          </el-col>
+        </el-row>
+      </template>
+    </el-skeleton>
+
+    <el-row v-if="!productLoading" :gutter="10">
+      <el-col :xs="24" :sm="24" :md="8">
+        <div class="bg-white br-5 p-20 product_image_wrapper">
+          <div class="full-width d-flex-center">
+            <img :src="item.media.source" alt="item" class="product_image" />
+          </div>
+
+          <div class="thumbnail_container">
+            <div class="br-5">
               <img
                 :src="item.media.source"
                 alt="item"
-                class="product_carousel"
+                class="product_thumbnail"
               />
-            </el-carousel-item>
-          </el-carousel>
+            </div>
+          </div>
         </div>
       </el-col>
-      <el-col :xs="24" :sm="24" :md="13">
+      <el-col :xs="24" :sm="24" :md="11">
         <div class="bg-white br-5 p-20">
           <h2>{{ item.name }}</h2>
           <div class="d-flex mt-10 mb-10">
@@ -88,13 +115,11 @@
           </div>
         </div>
       </el-col>
-    </el-row>
 
-    <el-dialog title="Cart Items" :visible.sync="showCartItems" width="50%">
-      <div>
-        <span>This is a message</span>
-      </div>
-    </el-dialog>
+      <el-col :xs="24" :sm="24" :md="5">
+        <p>hello from the side bar product</p>
+      </el-col>
+    </el-row>
   </div>
 </template>
 
@@ -106,7 +131,7 @@ export default {
   data() {
     return {
       showCartItems: false,
-      loading: true,
+      productLoading: true,
       item: null,
       rateValue: 3,
       showProductModal: true,
@@ -117,8 +142,8 @@ export default {
     await productService
       .getSingleProduct(this.$route.query.id)
       .then((result) => {
+        this.productLoading = false
         this.item = result
-        this.loading = false
       })
       .catch((err) => {
         console.log(err)
@@ -128,8 +153,31 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.item_discount_info li {
-  font-size: 12px;
-  list-style: inside;
+.item_discount_info {
+  li {
+    font-size: 12px;
+    list-style: inside;
+  }
+}
+.product_image_wrapper {
+  .product_image {
+    max-width: 200px;
+    width: 100%;
+  }
+
+  .thumbnail_container {
+    display: flex;
+    margin-top: 12px;
+
+    div {
+      width: 55px;
+      border: 1px solid grey;
+      margin-right: 5px;
+
+      .product_thumbnail {
+        width: 100%;
+      }
+    }
+  }
 }
 </style>

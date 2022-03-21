@@ -151,10 +151,6 @@ hr.dot {
 .clickable {
   cursor: pointer;
 }
-.product_carousel {
-  max-width: 300px;
-  width: 100%;
-}
 .bg-white {
   background-color: #fff;
 }

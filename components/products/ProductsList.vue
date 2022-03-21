@@ -62,7 +62,6 @@ export default {
   },
   data() {
     return {
-      count: 6,
       productsLoading: true,
       queryParams: {
         limit: 12,
