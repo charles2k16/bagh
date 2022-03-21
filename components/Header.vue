@@ -2,7 +2,7 @@
   <el-header class="sticky-header">
     <div class="section">
       <el-row :gutter="10">
-        <el-col :xs="7" :sm="7" :md="4">
+        <el-col :xs="7" :sm="7" :md="5">
           <div class="header_flex_center">
             <NuxtLink to="/"> <img src="/bag1.png" /></NuxtLink>
           </div>
@@ -10,13 +10,29 @@
 
         <el-col :xs="14" :sm="14" :md="15">
           <div class="header_flex_center header_search_input">
-            <el-input v-model="searchItem" placeholder="Search product...">
+            <!-- <el-input v-model="searchItem" placeholder="Search product...">
+              <el-button slot="append" icon="el-icon-search"></el-button>
+            </el-input> -->
+
+            <el-input
+              v-model="searchItem"
+              placeholder="Search items"
+              class="input-with-select"
+            >
+              <el-select
+                slot="prepend"
+                v-model="selectedSearch"
+                class="header_select"
+              >
+                <el-option label="Products" value="Products"></el-option>
+                <el-option label="Categories" value="Categories"></el-option>
+              </el-select>
               <el-button slot="append" icon="el-icon-search"></el-button>
             </el-input>
           </div>
         </el-col>
 
-        <el-col :xs="3" :sm="3" :md="5">
+        <el-col :xs="3" :sm="3" :md="4">
           <div class="header_flex_center">
             <HeaderCart />
 
@@ -73,10 +89,11 @@
 
 <script>
 export default {
-  name: 'Header',
+  name: 'HeaderComponent',
   data() {
     return {
       searchItem: '',
+      selectedSearch: 'Prodcuts',
     }
   },
   methods: {

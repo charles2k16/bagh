@@ -48,9 +48,8 @@
 </template>
 
 <script>
-// import categoriesService from '../api/categories'
-
 export default {
+  name: 'HomePage',
   data() {
     return {
       categories: [
