@@ -25,9 +25,9 @@
       </template>
     </el-skeleton>
 
-    <el-row v-if="!productLoading" :gutter="10">
+    <el-row v-if="!productLoading" :gutter="0">
       <el-col :xs="24" :sm="24" :md="8">
-        <div class="bg-white br-5 p-20 product_image_wrapper">
+        <div class="bg-white p-20 product_image_wrapper">
           <div class="full-width d-flex-center">
             <img :src="item.media.source" alt="item" class="product_image" />
           </div>
@@ -37,14 +37,14 @@
               <img
                 :src="item.media.source"
                 alt="item"
-                class="product_thumbnail"
+                class="product_thumbnail br-5"
               />
             </div>
           </div>
         </div>
       </el-col>
       <el-col :xs="24" :sm="24" :md="11">
-        <div class="bg-white br-5 p-20">
+        <div class="bg-white p-20">
           <h2>{{ item.name }}</h2>
           <div class="d-flex mt-10 mb-10">
             <el-rate v-model="rateValue" disabled text-color="#e5c13a">
@@ -161,18 +161,19 @@ export default {
 }
 .product_image_wrapper {
   .product_image {
-    max-width: 200px;
-    width: 100%;
+    height: 250px;
   }
 
   .thumbnail_container {
     display: flex;
-    margin-top: 12px;
+    margin-top: 20px;
+    margin-bottom: 12px;
 
     div {
       width: 55px;
-      border: 1px solid grey;
+      height: 55px;
       margin-right: 5px;
+      border: 0.5px solid grey;
 
       .product_thumbnail {
         width: 100%;
