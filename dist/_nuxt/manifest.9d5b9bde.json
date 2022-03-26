@@ -1,0 +1,9 @@
+{
+  "name": "baggh",
+  "short_name": "baggh",
+  "icons": [],
+  "start_url": "/?standalone=true",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "lang": "en"
+}
