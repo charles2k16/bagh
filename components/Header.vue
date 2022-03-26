@@ -2,45 +2,46 @@
   <el-header class="sticky-header">
     <div class="section">
       <el-row :gutter="10">
-        <el-col :xs="7" :sm="7" :md="5">
-          <div class="header_flex_center">
+        <el-col :xs="12" :sm="12" :md="5">
+          <div class="header_flex_center justify_start">
             <NuxtLink to="/"> <img src="/bag1.png" /></NuxtLink>
           </div>
         </el-col>
 
-        <el-col :xs="14" :sm="14" :md="15">
+        <el-col :xs="14" :sm="14" :md="15" class="hidden-sm-and-down">
           <div class="header_flex_center header_search_input">
-            <!-- <el-input v-model="searchItem" placeholder="Search product...">
-              <el-button slot="append" icon="el-icon-search"></el-button>
-            </el-input> -->
-
-            <el-input
-              v-model="searchItem"
-              placeholder="Search items"
+            <el-autocomplete
+              v-model="searchState"
+              :fetch-suggestions="querySearchAsync"
+              placeholder="Search for products"
               class="input-with-select"
+              clearable
+              :trigger-on-focus="false"
+              highlight-first-item
+              @select="onSelectedProduct"
             >
               <el-select
                 slot="prepend"
                 v-model="selectedSearch"
                 class="header_select"
               >
-                <el-option label="Products" value="Products"></el-option>
-                <el-option label="Categories" value="Categories"></el-option>
+                <el-option label="Products" value="products"></el-option>
+                <el-option label="Categories" value="categories"></el-option>
               </el-select>
               <el-button slot="append" icon="el-icon-search"></el-button>
-            </el-input>
+            </el-autocomplete>
           </div>
         </el-col>
 
-        <el-col :xs="3" :sm="3" :md="4">
-          <div class="header_flex_center">
+        <el-col :xs="12" :sm="12" :md="4">
+          <div class="header_flex_center justify_end">
             <HeaderCart />
 
             <el-dropdown trigger="click">
               <div class="account d-flex-center ml-20">
                 <i class="el-icon-user-solid icon"></i>
-                <span class="mx-10">Account</span>
-                <i class="el-icon-arrow-down icon2"></i>
+                <span class="mx-10 hidden-sm-and-down">Account</span>
+                <i class="el-icon-arrow-down icon2 hidden-sm-and-down"></i>
               </div>
 
               <el-dropdown-menu slot="dropdown">
@@ -83,6 +84,30 @@
           </div>
         </el-col>
       </el-row>
+
+      <!-- mobile search-->
+      <!-- <div class="header_flex_center header_search_input hidden-md-and-up">
+        <el-autocomplete
+          v-model="searchState"
+          :fetch-suggestions="querySearchAsync"
+          placeholder="Search for products"
+          class="input-with-select"
+          clearable
+          :trigger-on-focus="false"
+          highlight-first-item
+          @select="onSelectedProduct"
+        >
+          <el-select
+            slot="prepend"
+            v-model="selectedSearch"
+            class="header_select"
+          >
+            <el-option label="Products" value="products"></el-option>
+            <el-option label="Categories" value="categories"></el-option>
+          </el-select>
+          <el-button slot="append" icon="el-icon-search"></el-button>
+        </el-autocomplete>
+      </div> -->
     </div>
   </el-header>
 </template>
@@ -92,13 +117,48 @@ export default {
   name: 'HeaderComponent',
   data() {
     return {
-      searchItem: '',
+      searchState: '',
       selectedSearch: 'Prodcuts',
+      searchItems: [
+        { value: 'vue', link: 'https://github.com/vuejs/vue' },
+        { value: 'element', link: 'https://github.com/ElemeFE/element' },
+        { value: 'cooking', link: 'https://github.com/ElemeFE/cooking' },
+        { value: 'mint-ui', link: 'https://github.com/ElemeFE/mint-ui' },
+        { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
+        { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
+        { value: 'babel', link: 'https://github.com/babel/babel' },
+      ],
+      timeout: null,
     }
   },
   methods: {
     gettee() {
       console.log('we arehereeeee fuck thats')
+    },
+    onSelectedProduct(item) {
+      console.log(item)
+    },
+    querySearchAsync(queryString, cb) {
+      // check if queryString is empty
+      // and check if queryString is more than 2 characters
+      if (queryString !== '' && queryString.length > 2) {
+        // if not empty and more than 2 characters
+        // set timeout to simulate a server response
+        this.timeout = setTimeout(() => {
+          // clear timeout
+          clearTimeout(this.timeout)
+          // set queryString to lowercase
+          queryString = queryString.toLowerCase()
+          // filter the searchItems array by queryString
+          const results = this.searchItems.filter((item) => {
+            // if the item value contains the queryString
+            // return the item
+            return item.value.toLowerCase().indexOf(queryString) === 0
+          })
+          // call the callback function
+          cb(results)
+        }, 500)
+      }
     },
   },
 }
@@ -122,6 +182,10 @@ export default {
 }
 .header_search_input {
   width: 90%;
+
+  .input-with-select {
+    width: 100%;
+  }
 }
 .account {
   cursor: pointer;

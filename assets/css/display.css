@@ -1,0 +1,5 @@
+@media only screen and (max-width: 600px) {
+  .carousel_container .el-carousel__container {
+    height: 250px !important;
+  }
+}

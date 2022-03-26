@@ -6,11 +6,11 @@
       </div>
     </el-badge>
 
-    <el-dialog title="Cart Items" :visible.sync="showCartItems" width="50%">
+    <!-- <el-dialog title="Cart Items" :visible.sync="showCartItems" width="50%">
       <div>
         <span>This is a message</span>
       </div>
-    </el-dialog>
+    </el-dialog> -->
   </div>
 </template>
 
@@ -51,7 +51,7 @@ export default {
       //   this.hasNoItem = true
       // }
       console.log('tis is the thing')
-      this.showCartItems = true
+      // this.showCartItems = true
     },
   },
 }

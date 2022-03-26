@@ -32,7 +32,7 @@
 
 <script>
 export default {
-  name: 'Products',
+  name: 'ProductsListNew',
   props: {
     products: {
       type: Array,
