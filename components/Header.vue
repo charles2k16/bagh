@@ -13,6 +13,7 @@
             <div class="header_flex_center header_search_input">
               <el-autocomplete
                 v-model="searchState"
+                value-key="name"
                 :fetch-suggestions="querySearchAsync"
                 placeholder="Search for products"
                 class="input-with-select"
@@ -94,6 +95,7 @@
     >
       <el-autocomplete
         v-model="searchState"
+        value-key="name"
         :fetch-suggestions="querySearchAsync"
         placeholder="Search for products"
         class="input-with-select"
@@ -117,40 +119,38 @@
 </template>
 
 <script>
+import productService from '@/api/products'
+
 export default {
   name: 'HeaderComponent',
   data() {
     return {
       searchState: '',
       selectedSearch: 'Prodcuts',
-      searchItems: [
-        { value: 'vue', link: 'https://github.com/vuejs/vue' },
-        { value: 'element', link: 'https://github.com/ElemeFE/element' },
-        { value: 'cooking', link: 'https://github.com/ElemeFE/cooking' },
-        { value: 'mint-ui', link: 'https://github.com/ElemeFE/mint-ui' },
-        { value: 'vuex', link: 'https://github.com/vuejs/vuex' },
-        { value: 'vue-router', link: 'https://github.com/vuejs/vue-router' },
-        { value: 'babel', link: 'https://github.com/babel/babel' },
-      ],
+      searchItems: [],
       timeout: null,
     }
   },
+  async fetch() {
+    // get products and set response to this.searchItems
+    const response = await productService.getProducts()
+    this.searchItems = response
+  },
   computed: {
-    searchResults() {
-      return this.searchItems.filter((item) => {
-        return (
-          item.value.toLowerCase().indexOf(this.searchState.toLowerCase()) === 0
-        )
-      })
-    },
+    // searchResults() {
+    //   return this.searchItems.filter((item) => {
+    //     return (
+    //       item.name.toLowerCase().indexOf(this.searchState.toLowerCase()) === 0
+    //     )
+    //   })
+    // },
     isHomePage() {
       return this.$route.path === '/'
     },
   },
   methods: {
     onSelectedProduct(item) {
-      console.log(item)
-      console.log(this.$route)
+      this.showProductDeatils(item.name, item.id)
     },
     querySearchAsync(queryString, cb) {
       if (queryString !== '' && queryString.length > 2) {
@@ -161,13 +161,14 @@ export default {
           clearTimeout(this.timeout)
           // set queryString to lowercase
           queryString = queryString.toLowerCase()
+
           // filter the searchItems array by queryString
           const results = this.searchItems.filter((item) => {
             // if the item value contains the queryString
             // return the item
-            return item.value.toLowerCase().indexOf(queryString) === 0
+            return item.name.toLowerCase().indexOf(queryString) === 0
           })
-          // call the callback function
+          // call the callback function with the results
           cb(results)
         }, 500)
       }
