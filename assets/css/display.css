@@ -2,4 +2,8 @@
   .carousel_container .el-carousel__container {
     height: 250px !important;
   }
+  .header_search_input {
+    margin: 0 auto;
+    width: 95% !important;
+  }
 }

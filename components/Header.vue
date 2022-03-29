@@ -1,115 +1,119 @@
 <template>
-  <el-header class="sticky-header">
-    <div class="section">
-      <el-row :gutter="10">
-        <el-col :xs="12" :sm="12" :md="5">
-          <div class="header_flex_center justify_start">
-            <NuxtLink to="/"> <img src="/bag1.png" /></NuxtLink>
-          </div>
-        </el-col>
+  <div>
+    <el-header class="sticky-header">
+      <div class="section">
+        <el-row :gutter="10">
+          <el-col :xs="12" :sm="12" :md="5">
+            <div class="header_flex_center justify_start">
+              <NuxtLink to="/"> <img src="/bag1.png" /></NuxtLink>
+            </div>
+          </el-col>
 
-        <el-col :xs="14" :sm="14" :md="15" class="hidden-sm-and-down">
-          <div class="header_flex_center header_search_input">
-            <el-autocomplete
-              v-model="searchState"
-              :fetch-suggestions="querySearchAsync"
-              placeholder="Search for products"
-              class="input-with-select"
-              clearable
-              :trigger-on-focus="false"
-              highlight-first-item
-              @select="onSelectedProduct"
-            >
-              <el-select
-                slot="prepend"
-                v-model="selectedSearch"
-                class="header_select"
+          <el-col :xs="14" :sm="14" :md="15" class="hidden-sm-and-down">
+            <div class="header_flex_center header_search_input">
+              <el-autocomplete
+                v-model="searchState"
+                :fetch-suggestions="querySearchAsync"
+                placeholder="Search for products"
+                class="input-with-select"
+                clearable
+                :trigger-on-focus="false"
+                highlight-first-item
+                @select="onSelectedProduct"
               >
-                <el-option label="Products" value="products"></el-option>
-                <el-option label="Categories" value="categories"></el-option>
-              </el-select>
-              <el-button slot="append" icon="el-icon-search"></el-button>
-            </el-autocomplete>
-          </div>
-        </el-col>
+                <el-select
+                  slot="prepend"
+                  v-model="selectedSearch"
+                  class="header_select"
+                >
+                  <el-option label="Products" value="products"></el-option>
+                  <el-option label="Categories" value="categories"></el-option>
+                </el-select>
+                <el-button slot="append" icon="el-icon-search"></el-button>
+              </el-autocomplete>
+            </div>
+          </el-col>
 
-        <el-col :xs="12" :sm="12" :md="4">
-          <div class="header_flex_center justify_end">
-            <HeaderCart />
+          <el-col :xs="12" :sm="12" :md="4">
+            <div class="header_flex_center justify_end">
+              <HeaderCart />
 
-            <el-dropdown trigger="click">
-              <div class="account d-flex-center ml-20">
-                <i class="el-icon-user-solid icon"></i>
-                <span class="mx-10 hidden-sm-and-down">Account</span>
-                <i class="el-icon-arrow-down icon2 hidden-sm-and-down"></i>
-              </div>
-
-              <el-dropdown-menu slot="dropdown">
-                <div class="account_dropdown">
-                  <div class="acc_info">
-                    <p>
-                      Login now or Create an account for easy order tracking,
-                      rewards, offers and more.
-                    </p>
-
-                    <div>
-                      <el-button type="danger" size="small" class="full-width"
-                        ><b>Login</b></el-button
-                      >
-                    </div>
-
-                    <div class="mt-10">
-                      <el-button
-                        size="small"
-                        class="full-width"
-                        type="danger"
-                        plain
-                        ><b>Create Account</b></el-button
-                      >
-                    </div>
-                  </div>
-                  <hr class="rule" />
-                  <el-dropdown-item icon="el-icon-user"
-                    >Account Settings</el-dropdown-item
-                  >
-                  <el-dropdown-item icon="el-icon-folder-add"
-                    >Saved Items</el-dropdown-item
-                  >
-                  <el-dropdown-item icon="el-icon-shopping-cart-full"
-                    >Orders & Purchases</el-dropdown-item
-                  >
+              <el-dropdown trigger="click">
+                <div class="account d-flex-center ml-20">
+                  <i class="el-icon-user-solid icon"></i>
+                  <span class="mx-10 hidden-sm-and-down">Account</span>
+                  <i class="el-icon-arrow-down icon2 hidden-sm-and-down"></i>
                 </div>
-              </el-dropdown-menu>
-            </el-dropdown>
-          </div>
-        </el-col>
-      </el-row>
 
-      <!-- mobile search-->
-      <!-- <div class="header_flex_center header_search_input hidden-md-and-up">
-        <el-autocomplete
-          v-model="searchState"
-          :fetch-suggestions="querySearchAsync"
-          placeholder="Search for products"
-          class="input-with-select"
-          clearable
-          :trigger-on-focus="false"
-          highlight-first-item
-          @select="onSelectedProduct"
+                <el-dropdown-menu slot="dropdown">
+                  <div class="account_dropdown">
+                    <div class="acc_info">
+                      <p>
+                        Login now or Create an account for easy order tracking,
+                        rewards, offers and more.
+                      </p>
+
+                      <div>
+                        <el-button type="danger" size="small" class="full-width"
+                          ><b>Login</b></el-button
+                        >
+                      </div>
+
+                      <div class="mt-10">
+                        <el-button
+                          size="small"
+                          class="full-width"
+                          type="danger"
+                          plain
+                          ><b>Create Account</b></el-button
+                        >
+                      </div>
+                    </div>
+                    <hr class="rule" />
+                    <el-dropdown-item icon="el-icon-user"
+                      >Account Settings</el-dropdown-item
+                    >
+                    <el-dropdown-item icon="el-icon-folder-add"
+                      >Saved Items</el-dropdown-item
+                    >
+                    <el-dropdown-item icon="el-icon-shopping-cart-full"
+                      >Orders & Purchases</el-dropdown-item
+                    >
+                  </div>
+                </el-dropdown-menu>
+              </el-dropdown>
+            </div>
+          </el-col>
+        </el-row>
+      </div>
+    </el-header>
+    <!-- mobile search-->
+    <div
+      v-if="isHomePage"
+      class="header_flex_center header_search_input hidden-md-and-up"
+    >
+      <el-autocomplete
+        v-model="searchState"
+        :fetch-suggestions="querySearchAsync"
+        placeholder="Search for products"
+        class="input-with-select"
+        clearable
+        :trigger-on-focus="false"
+        highlight-first-item
+        @select="onSelectedProduct"
+      >
+        <el-select
+          slot="prepend"
+          v-model="selectedSearch"
+          class="header_select"
         >
-          <el-select
-            slot="prepend"
-            v-model="selectedSearch"
-            class="header_select"
-          >
-            <el-option label="Products" value="products"></el-option>
-            <el-option label="Categories" value="categories"></el-option>
-          </el-select>
-          <el-button slot="append" icon="el-icon-search"></el-button>
-        </el-autocomplete>
-      </div> -->
+          <el-option label="Products" value="products"></el-option>
+          <el-option label="Categories" value="categories"></el-option>
+        </el-select>
+        <el-button slot="append" icon="el-icon-search"></el-button>
+      </el-autocomplete>
     </div>
-  </el-header>
+  </div>
 </template>
 
 <script>
@@ -131,16 +135,24 @@ export default {
       timeout: null,
     }
   },
-  methods: {
-    gettee() {
-      console.log('we arehereeeee fuck thats')
+  computed: {
+    searchResults() {
+      return this.searchItems.filter((item) => {
+        return (
+          item.value.toLowerCase().indexOf(this.searchState.toLowerCase()) === 0
+        )
+      })
     },
+    isHomePage() {
+      return this.$route.path === '/'
+    },
+  },
+  methods: {
     onSelectedProduct(item) {
       console.log(item)
+      console.log(this.$route)
     },
     querySearchAsync(queryString, cb) {
-      // check if queryString is empty
-      // and check if queryString is more than 2 characters
       if (queryString !== '' && queryString.length > 2) {
         // if not empty and more than 2 characters
         // set timeout to simulate a server response

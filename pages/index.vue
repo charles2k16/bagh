@@ -32,6 +32,15 @@
       <div class="mt-20">
         <ProductsList title="Featured Products" type="all" />
       </div>
+
+      <el-row :gutter="10">
+        <el-col :xs="24" :sm="24" :md="12">
+          <img src="/banners/banner2-10.jpg" alt="" />
+        </el-col>
+        <el-col :xs="24" :sm="24" :md="12">
+          <img src="/banners/banner3-10.jpg" alt="" />
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
