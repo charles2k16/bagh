@@ -35,10 +35,10 @@
 
       <el-row :gutter="10">
         <el-col :xs="24" :sm="24" :md="12">
-          <img src="/banners/banner2-10.jpg" alt="" />
+          <img src="/banners/banner2-10.jpg" alt="banner" width="100%" />
         </el-col>
         <el-col :xs="24" :sm="24" :md="12">
-          <img src="/banners/banner3-10.jpg" alt="" />
+          <img src="/banners/banner3-10.jpg" alt="banner" width="100%" />
         </el-col>
       </el-row>
     </div>
