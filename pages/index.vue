@@ -68,20 +68,16 @@ export default {
       ],
     }
   },
-  // async fetch() {
-  //   await categoriesService
-  //     .getAllCategories()
-  //     .then((result) => {
-  //       this.categories = result
-  //     })
-  //     .catch((err) => {
-  //       console.log(err)
-  //     })
-  // },
-  methods: {
-    // gettee() {
-    //   console.log('we arehereeeee fuck thats')
-    // },
+  async fetch() {
+    await this.$OneSignal.push(() => {
+      this.$OneSignal.isPushNotificationsEnabled((isEnabled) => {
+        if (isEnabled) {
+          console.log('Push notifications are enabled!')
+        } else {
+          console.log('Push notifications are not enabled yet.')
+        }
+      })
+    })
   },
 }
 </script>

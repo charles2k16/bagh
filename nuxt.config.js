@@ -55,12 +55,14 @@ export default {
 
   oneSignal: {
     init: {
-      appId: 'YOUR_APP_ID',
+      appId: 'c38bbf7a-63be-49b0-9764-811f391fc294',
       allowLocalhostAsSecureOrigin: true,
       welcomeNotification: {
         disable: true,
       },
     },
+    cdn: true,
+    OneSignalSDK: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js',
   },
   pwa: {
     manifest: {
