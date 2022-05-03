@@ -43,7 +43,7 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    // https://go.nuxtjs.dev/pwa
+    '@nuxtjs/onesignal',
     '@nuxtjs/pwa',
   ],
 
@@ -53,10 +53,27 @@ export default {
     baseURL: '/',
   },
 
-  // PWA module configuration: https://go.nuxtjs.dev/pwa
+  oneSignal: {
+    init: {
+      appId: 'YOUR_APP_ID',
+      allowLocalhostAsSecureOrigin: true,
+      welcomeNotification: {
+        disable: true,
+      },
+    },
+  },
   pwa: {
     manifest: {
+      name: 'BuyAnything Ghana',
+      short_name: 'BAG',
       lang: 'en',
+      description: 'Find Ghanaian products locally with same day delivery.',
+    },
+    meta: {
+      appleStatusBarStyle: 'black-translucent',
+      theme_color: '#cc2228',
+      name: 'BuyAnything Ghana',
+      author: 'Charles Kwabena Obeng',
     },
   },
 
