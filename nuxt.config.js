@@ -1,7 +1,8 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  mode: 'universal',
-  target: 'static',
+  // target: 'static',
+
+  // Head: https://go.nuxtjs.dev/config-head
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
