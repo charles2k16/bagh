@@ -66,6 +66,9 @@ export default {
     OneSignalSDK: 'https://cdn.onesignal.com/sdks/OneSignalSDK.js',
   },
   pwa: {
+    icon: {
+      sizes: [96, 128, 192, 256, 384, 500, 1024],
+    },
     manifest: {
       name: 'BuyAnything Ghana',
       short_name: 'BAG',
